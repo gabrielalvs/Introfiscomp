@@ -21,7 +21,7 @@ c     program tarefa-3
                         vet(j-1) = vet(j)
                         vet(j) = aux 
                   end if
-            end do 
+            end do
       end do
 
       open(unit=ient,file='saida-1-12558547.dat')
