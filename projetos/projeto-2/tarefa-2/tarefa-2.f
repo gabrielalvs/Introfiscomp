@@ -1,7 +1,7 @@
 c     program tarefa-2
 
       Parameter(it_n = 10000)
-      Parameter(it_and = 10000)
+      Parameter(it_and = 10)
       dimension imatm(it_n)
       dimension ip(2)
       Parameter(ip = (/-1,1/))
@@ -38,28 +38,25 @@ c     program tarefa-2
 
       write(*,*) min, max
 
-      amp = abs(min)+abs(max)
+      min = min -1 
+      max = max +1
+
+      amp = max - min
       jan = 10
       rint = amp/jan
-      aux = min -rint
-
-      write(*,*) rint
-
+      aux = min
       open(unit=ient,file='saida-2.dat')
-      do while(aux<max)
+      do k = 1,jan
         rvalcolum = 0e0
-        aux = aux + rint
         do i = 1,it_and 
-            if (imatm(i)>aux-rint .and. imatm(i)<aux) then
+            if (imatm(i)>=aux .and. imatm(i)< aux+rint) then
                 rvalcolum = rvalcolum + 1
             end if
         end do
-        write(ient,*) aux, rvalcolum
+        write(ient,*) aux ,'-', aux + rint , rvalcolum
+        aux = aux + rint
       end do
       close(ient)
-
-
-
 
       end
 

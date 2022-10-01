@@ -1,10 +1,11 @@
 c     program tarefa-3
 
-      Parameter(it_n = 100)
-      Parameter(it_and = 100)
+      Parameter(it_n = 100000)
+      Parameter(it_and = 10)
       dimension imatm(it_n)
       dimension ip(2)
       Parameter(ip = (/-1,1/))
+      Parameter(p = 3)
       Parameter(ient = 10)
 
       rmedx = 0e0
@@ -13,12 +14,11 @@ c     program tarefa-3
       do i=1,it_and
         n = 0
         do k=1,it_n
-            r = rand()*3
-            j = int((r+1)/3)+1
+            r = rand()*p
+            j = int((r+1)/p)+1
             n = n + ip(j)
         end do
         imatm(i) = n
-        write(*,*) imatm(i)
         rmedx = rmedx + n
         rmedx2 = rmedx2 + n*n
       end do
@@ -38,28 +38,25 @@ c     program tarefa-3
 
       write(*,*) min, max
 
-      amp = abs(min)+abs(max)
+      min = min -1 
+      max = max +1
+
+      amp = max - min
       jan = 10
       rint = amp/jan
-      aux = min -rint
-
-      write(*,*) rint
-
+      aux = min
       open(unit=ient,file='saida-2.dat')
-      do while(aux<max)
+      do k = 1,jan
         rvalcolum = 0e0
-        aux = aux + rint
         do i = 1,it_and 
-            if (imatm(i)>aux-rint .and. imatm(i)<aux) then
+            if (imatm(i)>=aux .and. imatm(i)< aux+rint) then
                 rvalcolum = rvalcolum + 1
             end if
         end do
-        write(ient,*) aux, rvalcolum
+        write(ient,*) aux ,'-', aux + rint , rvalcolum
+        aux = aux + rint
       end do
       close(ient)
-
-
-
 
       end
 
