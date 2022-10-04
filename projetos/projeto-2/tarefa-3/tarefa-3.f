@@ -36,8 +36,6 @@ c     program tarefa-3
         end if  
       end do
 
-      write(*,*) min, max
-
       min = min -1 
       max = max +1
 
@@ -45,7 +43,7 @@ c     program tarefa-3
       jan = 10
       rint = amp/jan
       aux = min
-      open(unit=ient,file='saida-2.dat')
+      open(unit=ient,file='saida-3.dat')
       do k = 1,jan
         rvalcolum = 0e0
         do i = 1,it_and 

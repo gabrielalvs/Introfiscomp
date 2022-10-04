@@ -18,7 +18,6 @@ c     program tarefa-2
             n = n + ip(j)
         end do
         imatm(i) = n
-        write(*,*) imatm(i)
         rmedx = rmedx + n
         rmedx2 = rmedx2 + n*n
       end do
@@ -35,8 +34,6 @@ c     program tarefa-2
             max = imatm(i)
         end if  
       end do
-
-      write(*,*) min, max
 
       min = min -1 
       max = max +1
