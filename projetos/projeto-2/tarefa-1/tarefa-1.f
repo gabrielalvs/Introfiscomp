@@ -11,6 +11,7 @@ c     program tarefa-1
             rr = rand()
             resp = resp + rr**i
         end do
-        write(*,*) '<rr>**',i,' : ', resp/m
+        write(*,3) i, resp/m
+3       format('<rr**', i0,'>: ', e0.10)
       end do
       end
