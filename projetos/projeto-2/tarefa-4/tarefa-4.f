@@ -31,34 +31,9 @@ c     program tarefa-4
 
       write(*,*) '<r>: ', rmedx, '<Δ²>: ', rmedx2
 
-      rmin = rmatm_xy(1,3)
-      rmax = rmin
-      do i = 2,it_and 
-        if (.NOT. (rmin < rmatm_xy(i,3))) then
-            rmin = rmatm_xy(i,3)
-        end if
-        if (.NOT. (rmax > rmatm_xy(i,3))) then
-            rmax = rmatm_xy(i,3)
-        end if  
-      end do
-
-      rmin = rmin -1 
-      rmax = rmax +1
-
-      amp = rmax - rmin
-      rjan = 10
-      rint = amp/rjan
-      aux = rmin
       open(unit=ient,file='saida-4.dat')
-      do while(aux<rmax) 
-      rvalcolum = 0e0
-      do i = 1,it_and 
-        if (rmatm_xy(i,3)>=aux .and. rmatm_xy(i,3)< aux+rint) then
-            rvalcolum = rvalcolum + 1
-        end if
-      end do
-      write(ient,*) aux ,'-', aux + rint , rvalcolum
-      aux = aux + rint
+      do i = 1, it_and
+        write(ient,*) rmatm_xy(i,1), rmatm_xy(i,2)
       end do
       close(ient)
 
