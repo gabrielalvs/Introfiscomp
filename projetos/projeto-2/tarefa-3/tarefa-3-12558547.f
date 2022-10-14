@@ -1,7 +1,7 @@
 c     program tarefa-3
 
       Parameter(it_n = 100000)
-      Parameter(it_and = 10)
+      Parameter(it_and = 10000)
       dimension imatm(it_n)
       dimension ip(2)
       Parameter(ip = (/-1,1/))
@@ -43,7 +43,7 @@ c     program tarefa-3
       jan = 10
       rint = amp/jan
       aux = min
-      open(unit=ient,file='saida-3.dat')
+      open(unit=ient,file='saida-2-12558547.dat')
       do k = 1,jan
         rvalcolum = 0e0
         do i = 1,it_and 

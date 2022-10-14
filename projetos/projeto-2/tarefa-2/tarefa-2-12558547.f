@@ -42,7 +42,7 @@ c     program tarefa-2
       jan = 10
       rint = amp/jan
       aux = min
-      open(unit=ient,file='saida-2.dat')
+      open(unit=ient,file='saida-1-12558547.dat')
       do k = 1,jan
         rvalcolum = 0e0
         do i = 1,it_and 
