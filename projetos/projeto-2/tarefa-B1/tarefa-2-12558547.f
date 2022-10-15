@@ -1,7 +1,7 @@
 c     program tarefa-2
 
       Parameter(it_n = 10000)
-      Parameter(it_and = 10)
+      Parameter(it_and = 1000)
       dimension imatm(it_n)
       dimension ip(2)
       Parameter(ip = (/-1,1/))
@@ -50,7 +50,7 @@ c     program tarefa-2
                 rvalcolum = rvalcolum + 1
             end if
         end do
-        write(ient,*) aux ,'-', aux + rint , rvalcolum
+        write(ient,*) aux, rvalcolum
         aux = aux + rint
       end do
       close(ient)

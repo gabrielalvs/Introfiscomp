@@ -1,7 +1,7 @@
 c     program tarefa-4
 
-      Parameter(it_n = 100)
-      Parameter(it_and = 100)
+      Parameter(it_n = 10)
+      Parameter(it_and = 1000)
       dimension rmatm_xy(it_and,2)
       dimension ip(2)
       Parameter(ip = (/-1,1/))
