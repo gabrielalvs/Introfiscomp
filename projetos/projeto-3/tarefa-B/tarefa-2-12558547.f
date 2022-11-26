@@ -32,7 +32,7 @@ c     program tarefa-2
         !regra de boole
         rboole = 0d0
         do j = 1, (ivn(i)/4)
-                xj = 4*j*h
+                xj = a+ 4*j*h
                 rboole = + rboole + 7*fx(xj,-4d0,h) + 32*fx(xj,-3d0,h)! 
      ++ 12*fx(xj,-2d0,h)+32*fx(xj,-1d0,h)+7*fx(xj,0d0,h)
         end do
