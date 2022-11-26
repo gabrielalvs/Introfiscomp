@@ -1,20 +1,33 @@
 c     program tarefa-B
       implicit real*8 (a-h,o-z)
-      Parameter(nite = 1536d0)
+      Parameter(nite = 1000)!numero de interações 
       Parameter(tempo = 50d0)!segundos
-      Parameter(rpi = 2d0*dacos(-1d0))
-      Parameter(rg = 9.8d0)
-      Parameter(rl = 9.8d0)
-      Parameter(m = 1.0d0)
+      Parameter(rpi = 2d0*dacos(-1d0))!2pi
+      Parameter(rg = 9.8d0)!gravidade
+      Parameter(rl = 9.8d0)!comprimento do pendulo
+      Parameter(m = 1.0d0)!massa do pendulo
+      Parameter(in = 10d0)
+      dimension rlist_tetha(6)
 
       Parameter(isaid1 = 10)
       open(unit=isaid1,file='saida_oscilacao.dat')
 
+      rlist_tetha = (/(rpi/96.0d0),(rpi/48.0d0),(rpi/24.0d0),
+     +(rpi/16.0d0),(rpi/8.0d0),(rpi/4.0d0)/)
       deltat = (tempo*1d0)/(nite*1d0)
-      theta = rpi/24.0d0
+
+      do l = 1,6 
+      tetha_0 = rlist_tetha(l)
+
+      theta = tetha_0
       omega = 0.0d0
+
       iter = 0 
 
+      rboole = 0d0
+      epson = 1d-5
+      h = (2d0*tetha_0)/nite
+      
       do i = 1, nite
 
 c     calculo de omega 
@@ -28,24 +41,22 @@ c     calculo de theta
 
       theta = theta_p1
       omega = omega_p1
-
       end do
 
       !regra de boole
-      rboole = 0d0
-      tetha_0 = rpi/24.0d0
-      epson = 1d-4
-      h = (2d0*tetha_0)/nite
       do j = 1, (nite/4)-1
             xj = -tetha_0 + 4d0*j*h + epson
             rboole = rboole +7d0*fx(xj,-4d0,h,tetha_0) 
      ++32d0*fx(xj,-3d0,h,tetha_0) +12d0*fx(xj,-2d0,h,tetha_0)
      ++32d0*fx(xj,-1d0,h,tetha_0) +7d0*fx(xj,0d0,h,tetha_0)
-      write(*,*)rboole*(2*h/45)
       end do
-      rboole = rboole*(2*h/45)
-      rboole = rboole + 2d0*dsqrt(2d0*rl/rg)*dsqrt(epson/dsin(tetha_0))
-      write(*,*) iter, (2d0*tempo)/iter, rboole
+      rboole =rboole*(2*h/45)
+
+      rboole =rboole*dsqrt((2d0*rl)/rg)
+      rboole =rboole +2d0*dsqrt((2d0*rl)/rg)*dsqrt(epson/dsin(tetha_0))
+      write(*,*) rlist_tetha(l), iter, (2d0*tempo)/iter, rboole
+
+      end do
 
       close(isaid1)
       end
