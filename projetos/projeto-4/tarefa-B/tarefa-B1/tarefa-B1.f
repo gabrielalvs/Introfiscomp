@@ -1,6 +1,6 @@
 c     program tarefa-B
       implicit real*8 (a-h,o-z)
-      Parameter(nite = 1000)!numero de interações 
+      Parameter(nite = 100000)!numero de interações 
       Parameter(tempo = 50d0)!segundos
       Parameter(rpi = 2d0*dacos(-1d0))!2pi
       Parameter(rg = 9.8d0)!gravidade
@@ -25,9 +25,9 @@ c     program tarefa-B
       iter = 0 
 
       rboole = 0d0
-      epson = 1d-5
+      epson = 0.2d-5
       h = (2d0*tetha_0)/nite
-      
+      !write(*,*) epson, h
       do i = 1, nite
 
 c     calculo de omega 
