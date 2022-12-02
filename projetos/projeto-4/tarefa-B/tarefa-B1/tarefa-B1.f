@@ -1,7 +1,7 @@
 c     program tarefa-B
       implicit real*8 (a-h,o-z)
-      Parameter(nite = 100000)!numero de interações 
-      Parameter(tempo = 50d0)!segundos
+      Parameter(nite = 10000d0)!numero de interações 
+      Parameter(tempo = 500d0)!segundos
       Parameter(rpi = 2d0*dacos(-1d0))!2pi
       Parameter(rg = 9.8d0)!gravidade
       Parameter(rl = 9.8d0)!comprimento do pendulo
@@ -25,7 +25,7 @@ c     program tarefa-B
       iter = 0 
 
       rboole = 0d0
-      epson = 0.2d-5
+      epson = 1d-7
       h = (2d0*tetha_0)/nite
       !write(*,*) epson, h
       do i = 1, nite
@@ -54,7 +54,9 @@ c     calculo de theta
 
       rboole =rboole*dsqrt((2d0*rl)/rg)
       rboole =rboole +2d0*dsqrt((2d0*rl)/rg)*dsqrt(epson/dsin(tetha_0))
-      write(*,*) rlist_tetha(l), iter, (2d0*tempo)/iter, rboole
+
+      analitico = rpi* (1 + tetha_0**2/16)
+      write(*,*) rlist_tetha(l), (2d0*tempo)/iter, rboole,analitico
 
       end do
 

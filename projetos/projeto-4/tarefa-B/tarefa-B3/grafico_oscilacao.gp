@@ -4,6 +4,7 @@ reset
 
 set xlabel "Tempo (s)"
 set ylabel "θ (rad)"
+set grid
 
 set style line 1 lc rgb "black" lw 3
 
