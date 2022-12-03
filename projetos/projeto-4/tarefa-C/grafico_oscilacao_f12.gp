@@ -3,7 +3,7 @@ set output "grafico_oscilacao_f12.png"
 reset
 
 set xlabel "Tempo (s)"
-set ylabel "θ (rad)"
+set ylabel "ln({/Symbol D}θ) (rad)"
 set title "grafico"
 set key bottom right
 set grid

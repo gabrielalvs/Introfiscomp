@@ -1,7 +1,7 @@
 c     program tarefa-C
       implicit real*8 (a-h,o-z)
-      Parameter(nite = 1000d0)
-      Parameter(tempo = 30d0)!segundos
+      Parameter(nite = 10000d0)
+      Parameter(tempo = 300d0)!segundos
       Parameter(rpi = 2d0*dacos(-1d0))
       Parameter(rg = 9.8d0)
       Parameter(rl = 9.8d0)
@@ -19,13 +19,10 @@ c     program tarefa-C
 
       deltat = (tempo*1d0)/(nite*1d0)
 
-      do j = 2, 2
+      do j = 1, 2
 
       theta1 = rpi/48d0
       omega1 = 0.0d0
-
-      theta2 = theta1 + 0.001d0
-      omega2 = omega1
 
       do i = 1, nite
 
@@ -36,21 +33,10 @@ c     calculo de omega1
 c     calculo de theta1 
       theta1_p1 = theta1 + omega1_p1*deltat
 
-c     calculo de omega2 
-      omega2_p1 = omega2 -(rg/rl)*dsin(theta2)*deltat 
-     +-gamma*omega2*deltat+f_0(j)*dsin(omm*deltat*i)*deltat
-
-c     calculo de theta2 
-      theta2_p1 = theta2 + omega2_p1*deltat
-
-      write(10,*) i*deltat, mod(50*rpi+theta1_p1,-rpi)
-     +-mod(50*rpi+theta2_p1,-rpi)
+      write(10*j,*) mod(50*rpi+theta1_p1,-rpi), omega1_p1
 
       theta1 = theta1_p1
       omega1 = omega1_p1
-
-      theta2 = theta2_p1
-      omega2 = omega2_p1
 
       end do
       end do
