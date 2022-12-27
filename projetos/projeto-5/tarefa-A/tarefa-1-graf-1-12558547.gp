@@ -5,8 +5,8 @@ reset
 set xlabel "x (AU)"
 set ylabel "y (AU)"
 
-set xrange[-1.2:1.2]
-set yrange[-1.2:1.2]
+#set xrange[-1.2:1.2]
+#set yrange[-1.2:1.2]
 
 unset grid
 set size square
