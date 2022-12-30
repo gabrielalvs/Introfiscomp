@@ -90,7 +90,7 @@ c     program tarefa-A
 
             write(*,*) "Périodo em dias: ", t*365
 
-            write(*,*) "T²/r³", ((t**2)/(r0(j)**3))
+            write(*,*) "T²/r³: ", ((t**2)/(r0(j)**3))
 
             write(*,*) "---------------------------------"
 
